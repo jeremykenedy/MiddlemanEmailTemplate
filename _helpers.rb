@@ -20,43 +20,6 @@ class EmailTemplateHelpers < Middleman::Extension
 	      end
 	    end
 	  end
-
-	  def page_data(ns, var)
-	    return is_building == true ? "%%=v(@" + ns.to_s + "_" + var.to_s + ")=%%" : data.template[ns][var]
-	  end
-
-	  def page_link(ns, var)
-	    return is_building == true ? "%%=redirectto(@" + ns.to_s + "_" + var.to_s + ")=%%" : data.template[ns][var]
-	  end
-
-	  def page_link_format ns, var
-	    alias_var = var.to_s + "_alias"
-	    
-	    if ( data.template[ns][alias_var].nil? || data.template[ns][alias_var].empty? )
-	      raise "Variable " + ns.to_s + " => " + var.to_s + " needs an alias"
-	    end
-	    
-	    if ( is_building == true )
-	      return "href=\"%%=redirectto(@" + ns.to_s + "_" + var.to_s + ")=%%\" alias=\"%%=redirectto(@" + ns.to_s + "_" + alias_var + ")=%%\""
-	    else
-	      return "href=\"" + data.template[ns][var] + "\" alias=\"" + data.template[ns][alias_var] + "\""
-	    end
-	  end
-
-	  def image_src filename
-	    return images_dir + "/" + filename
-	  end
-
-	  def region regionName, force=false
-	    if ( is_building == true || force == true )
-	      concat "%%=BeginImpressionRegion(\"" + regionName + "\")=%%"
-	      yield
-	      concat "%%=EndImpressionRegion()=%%"
-	    else
-	      yield 
-	    end
-	  end
-
 	end
 end
 

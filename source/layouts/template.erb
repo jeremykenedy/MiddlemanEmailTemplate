@@ -8,24 +8,58 @@
     <% end %>
     <title><%= data.page.title || "Email Template" %></title>
 
-    <style>
-        <% css_path = sitemap.resources.select { |p| p.source_file.match(/reset[.]css/) }.first %>
-        <%= css_path.render %>
-    </style>
-    <style>
-        <% css_path = sitemap.resources.select { |p| p.source_file.match(/all[.]css[.]scss$/) }.first %>
-        <%= css_path.render %>
-    </style>
+    <%= inline_stylesheet 'template/mq' %>
+    <%= stylesheet_link_tag 'template/inline' %>
 </head>
 
 <body style="background: #fff;font-family:Arial, Helvetica, sans-serif; font-size:1em;">
-    <table id="backgroundTable" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#fff;">
+    <table id="backgroundTable" width="100%" style="background:#fff;">
         <tr>
-            <td class="body" align="center" valign="top" style="background:#fff;" width="100%">
+            <td class="body" align="center" valign="top" width="100%">
                 <table cellpadding="0" cellspacing="0">
                     <tr>
-                        <td class="main" width="600" align="center">
+                        <td align="left" class="preheader">
+                            <a href="%%view_email_url%%" class="link">View as a webpage</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="<%= current_page.data.headerClass %>">
+                            <table cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td width="27" class="header-spacer">
+                                        <img src="http://image.exct.net/lib/fe621570726c05787711/m/1/spacer.gif" alt="" width="27" height="10" />
+                                    </td>
+                                    <td class="header-logo">
+                                        <%= yield_content :logo %>
+                                    </td>
+                                    <td align="right" class="header-text-container" style="text-align: right;">
+                                        <%= content_area "headerText" %>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="header-curve">
+                            <%= yield_content :logoCurve %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="main" width="600" align="center">
                             <%= yield %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="footer" width="600">
+                            <%= content_area "footer" %>
+                            <br /><br />
+                            <a href="%%unsub_center_url%%" alias="unsubscribe" style="text-decoration: none; color: #0163a2; font-weight: bold;">Unsubscribe</a> | <a href="%%profile_center_url%%" alias="profile_center" style="text-decoration: none; color: #0163a2; font-weight: bold;">Profile Center</a>
+                            <br /><br />
+
+                            This email was sent by: %%member_busname%%<br />
+                            %%member_addr%%<br />
+                            %%member_city%%, %%member_state%% %%member_postalcode%%
+
                         </td>
                     </tr>
                 </table>

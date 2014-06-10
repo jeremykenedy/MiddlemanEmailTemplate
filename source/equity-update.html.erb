@@ -1,0 +1,61 @@
+---
+title: Equity Update
+layout: template
+headerClass: header
+---
+
+<% content_for :logo do %>
+    <a href="http://www.scoutinv.com">
+        <img src="http://image.exct.net/lib/fe621570726c05787711/m/1/logo-equity.png" alt="Scout Investments" width="165" height="64" />
+    </a>
+<% end %>
+
+<% content_for :logoCurve do %>
+    <img src="http://image.exct.net/lib/fe621570726c05787711/m/1/logo-equity-curve.png" alt="" width="600" height="46" />
+<% end %>
+
+<table cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td colspan="2"><%= content_area "subHeaderText" %></td>
+    </tr>
+    <tr valign="top" style="vertical-align: top;">
+        <td width="395" class="primary-col">
+            <table cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td><%= content_area "copyWithHeader" %></td>
+                </tr>
+                <tr>
+                    <td><%= content_area "copyWithColumns" %></td>
+                </tr>
+                <tr>
+                    <td><%= content_area "copyWithHeader" %></td>
+                </tr>
+                <tr>
+                    <td><%= content_area "empty" %></td>
+                </tr>
+                <tr>
+                    <td><%= content_area "empty" %></td>
+                </tr>
+            </table>
+        </td>
+        <td width="205" class="secondary-col">
+            <table cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td><%= content_area "assets" %></td>
+                </tr>
+                <tr>
+                    <td><%= content_area "highlights" %></td>
+                </tr>
+                <tr>
+                    <td><%= content_area "copyWithHeader" %></td>
+                </tr>
+                <tr>
+                    <td><%= content_area "empty" %></td>
+                </tr>
+                <tr>
+                    <td><%= content_area "empty" %></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

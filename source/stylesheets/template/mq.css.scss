@@ -1,0 +1,55 @@
+@import "mq/reset";
+
+td[class=body] {
+    @media only screen and (max-width: 599px) {
+        padding: 0 1em;
+
+        .preheader {
+            width: auto !important;
+        }
+
+        .header-curve {
+            img {
+                display: none !important;    
+            }
+            padding-bottom: 10px;
+        }
+    }
+
+    @media only screen and (max-width: 580px) {
+        .primary-col,
+        .secondary-col {
+            display: block;
+            width: 100% !important;
+            padding: 0 !important;
+            border: 0 !important;
+        }
+
+    }
+
+    @media only screen and (max-width: 450px) {
+        .col-left,
+        .col-right {
+            display: block;
+            width: 100% !important;
+            padding: 0 !important;
+        }
+    }
+    @media only screen and (max-width: 410px) {
+        .header-spacer,
+        .header-logo,
+        .header-text-container {
+            display: block;
+        }
+        .header-spacer {
+            display: none;
+        }
+        .header-logo {
+            padding: 10px !important;
+        }
+        .header-text-container {
+            padding: 0 10px 10px !important;
+            text-align: left !important;
+        }
+    }
+}

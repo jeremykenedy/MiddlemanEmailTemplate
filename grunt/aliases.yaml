@@ -1,0 +1,19 @@
+build:
+    - 'shell:build'
+    - 'premailer:build'
+    - 'string-replace:build'
+preview:
+    - 'env:preview'
+    - 'shell:build'
+    - 'premailer:preview'
+    - 'string-replace:preview'
+server:
+    - 'shell:server'
+sandbox:
+    - 'mount:sandbox'
+    - 'copy:preview'
+    - 'unmount:sandbox'
+test:
+    - 'mailgun:test'
+litmus:
+    - 'mailgun:litmus'

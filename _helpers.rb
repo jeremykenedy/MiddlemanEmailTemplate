@@ -80,6 +80,12 @@ class EmailTemplateHelpers < Middleman::Extension
 	  		end
 	  	end
 	  end
+	  
+	  def inline_stylesheet( name )
+	    content_tag :style, 'data-premailer' => "ignore" do
+	      sprockets[ "#{name}.css" ].to_s
+	    end
+	  end
 
 	end
 end
